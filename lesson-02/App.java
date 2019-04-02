@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.Random;
 
 public class App {
@@ -6,6 +7,51 @@ public class App {
         test1();
         test2();
         test3();
+        test4();
+        test5();
+        test6();
+    }
+
+    public static void test4() {
+        System.out.println('\t' + "test #4: insertion sort test");
+        DynamicArray a = generateArray(100);
+        a.display();
+        a.insertionSort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        a.display();
+        System.out.println();
+    }
+
+    public static void test5() {
+        System.out.println('\t' + "test #5: selection sort test");
+        DynamicArray a = generateArray(100);
+        a.display();
+        a.selectionSort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        a.display();
+        System.out.println();
+    }
+
+    public static void test6() {
+        System.out.println('\t' + "test #6: bubble sort test");
+        DynamicArray a = generateArray(100);
+        a.display();
+        a.bubbleSort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        a.display();
+        System.out.println();
     }
 
     // Генератор для массива
@@ -15,6 +61,14 @@ public class App {
         for (int i = 0; i < size; i++)
             list.add(rand.nextInt(100));
         return list;
+    }
+
+    public static double getAverage(double[] results) {
+        double sum = 0;
+        int count = results.length;
+        for (int i = 0; i < count; i++)
+            sum += results[i];
+        return sum / count;
     }
 
     // Тест поиска в массиве

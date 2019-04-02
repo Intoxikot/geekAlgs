@@ -122,4 +122,30 @@ public class DynamicArray<Item> {
     public int capacity() {
         return data.length; // Однако, удобно применять в целях самого же массива - capacity прозрачнее, чем data.length
     }
+
+    public void selectionSort(Comparator<Item> cmp) {
+        for (int i = 0; i < size() - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < size(); j++)
+                if (cmp.compare(get(j), get(min)) < 0) min = j; // если использовать get() то приводить к типу Item - не требуется (магия, не иначе)
+            Item temp = get(i); set(i, get(min)); set(min, temp); // swap(min, i)
+        }
+    }
+
+    public void insertionSort(Comparator<Item> cmp) {
+        for (int i = 0; i < size(); i++)
+            for (int j = i; j > 0; j--)
+                if (cmp.compare(get(j), get(j - 1)) < 0) {
+                    Item tmp = get(j); set(j, get(j - 1)); set(j - 1, tmp); // swap(j, j - 1)
+                } else
+                    break;
+    }
+
+    public void bubbleSort(Comparator<Item> cmp) {
+        for (int i = 0; i < size(); i++)
+            for (int j = 0; j < size() - 1 - i; j++)
+                if (cmp.compare(get(j + 1), get(j)) < 0) {
+                    Item tmp = get(j); set(j, get(j + 1)); set(j + 1, tmp);
+                }
+    }
 }
