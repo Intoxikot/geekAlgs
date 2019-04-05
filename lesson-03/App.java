@@ -4,7 +4,7 @@ public class App {
     public static void main(String[] args) {
         testStack();
         testQueue();
-        // testDeque();
+        testDeque();
         reverseString("you shall not pass");
     }
 
@@ -51,6 +51,31 @@ public class App {
             myQueue.pop();
             System.out.println(myQueue);
         }
+        System.out.println();
+    }
+
+    public static void testDeque() {
+        System.out.println('\t' + "Deque-test:");
+        DequeArray<Integer> myDeque = new DequeArray<>();
+
+        System.out.println(myDeque);
+        System.out.println(myDeque.isEmpty());
+        System.out.println(myDeque.size());
+
+        myDeque.pushFront(3);
+        myDeque.pushFront(2);
+        myDeque.pushFront(1);
+        System.out.println(myDeque);
+
+        myDeque.pushLast(4);
+        myDeque.pushLast(5);
+        myDeque.pushLast(6);
+        System.out.println(myDeque);
+
+        System.out.println(myDeque.popLast());
+        System.out.println(myDeque.popFront());
+        System.out.println(myDeque);
+
         System.out.println();
     }
 
