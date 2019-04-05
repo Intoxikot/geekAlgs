@@ -43,18 +43,18 @@ public class QueueArray<Item>  {
         return value;
     }
 
-    // Прочесть последний элемент
+    // Прочесть первый элемент
     public Item peek() {
         checkEmpty();
         return (Item) data[head];
     }
 
-    // Пуст?
+    // Очередь пуста?
     public boolean isEmpty() {
         return count == 0;
     }
 
-    // Количество элементов в стеке
+    // Количество элементов в очереди
     public int size() {
         return count;
     }
@@ -67,8 +67,10 @@ public class QueueArray<Item>  {
     // Изменить размер очереди
     private void resize(int size) {
         Object[] temp = new Object[size];
-        for (int i = 0; i < count; i++)
-            temp[i] = data[(head + i) % capacity];
+        for (int i = 0; i < count; i++) {
+            int pos = (head + i) % capacity;
+            temp[i] = data[pos];
+        };
         data = temp;
         capacity = size;
         head = 0;
